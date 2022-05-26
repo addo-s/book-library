@@ -15,7 +15,7 @@ class Book {
 const form = document.getElementById('form');
 const addBtn = document.getElementById('add-book');
 addBtn.addEventListener('click', () => {    
-    form.style.display = 'block';
+    form.style.display = 'flex';
 });
 
 //add book to array

@@ -16,11 +16,13 @@
         <input type="text" name="author" id="author" required>
         <label for="pages">Pages: </label>
         <input type="number" name="pages" id="pages" required>
-        <p>Did you read it?</p>
-        <label for="read">Yes</label>
-        <input name="radio1" type="radio" id="read" value="Yes">
-        <label for="not-read">No</label>
-        <input name="radio1" type="radio" id="not-read" value="No">
+        <fieldset id="radio">
+            <p>Did you read it?</p>
+            <label for="read">Yes</label>
+            <input name="radio1" type="radio" id="read" value="Yes">
+            <label for="not-read">No</label>
+            <input name="radio1" type="radio" id="not-read" value="No">            
+        </fieldset>
         <button type="submit" id="submit-btn">Click to add</button>
     </form>
     <div id="container">      
