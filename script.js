@@ -46,19 +46,53 @@ const container = document.getElementById('container');
 function showCard() {
     library.forEach((book, index, array) => { 
         if (index === array.length-1){
-            const content = `
-                <div class="book-card">
-                    <h2>Title: ${book.title}</h5> 
-                    <p>Author: ${book.author}</p>
-                    <p>Pages: ${book.pages}</p>
-                    <p>Did you read it? ${book.read}</p>
-                    <button type="button" id="remove">Remove</button>
-                    <button type="button" id="read-not-read">Read?</button>
-                </div>
-                `;
+            const bookCard = document.createElement('div');
+            bookCard.classList.add('book-card');            
             
-            container.innerHTML += content;
-        }
+            const bookTitle = document.createElement('h2');
+            bookTitle.textContent = `Title: ` + book.title;
+            bookCard.appendChild(bookTitle);
+
+            const bookAuthor = document.createElement('p');
+            bookAuthor.textContent = `Author: ` + book.author;
+            bookCard.appendChild(bookAuthor);
+
+            const bookPages = document.createElement('p');
+            bookPages.textContent = `Pages: ` + book.pages;
+            bookCard.appendChild(bookPages);
+
+            const bookStatus = document.createElement('p');            
+            bookStatus.textContent = `Did you read it? - ` + book.read;
+            bookCard.appendChild(bookStatus);
+
+            const removeButton = document.createElement('button');
+            removeButton.setAttribute('id', 'remove');
+            removeButton.textContent = `Remove`;
+            bookCard.appendChild(removeButton);
+
+            const toggleButton = document.createElement('button');
+            toggleButton.setAttribute('id', 'toggle');
+            toggleButton.textContent = `Read?`;
+            bookCard.appendChild(toggleButton);         
+
+            container.appendChild(bookCard);
+            
+            removeButton.addEventListener('click', () => {
+                container.removeChild(bookCard);
+            }); 
+
+            toggleButton.addEventListener('click', () => {
+               if (book.read === 'No') {
+                   bookStatus.textContent = 'Did you read it? - Yes';
+                   book.read = 'Yes';
+               } else if (book.read === 'Yes') {
+                   bookStatus.textContent = 'Did you read it? - No';
+                   book.read = 'No';
+               }
+            });
+        }        
     });
-}
+};
+
+
 
